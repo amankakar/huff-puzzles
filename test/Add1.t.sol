@@ -18,7 +18,9 @@ contract Add1Test is Test, NonMatchingSelectorHelper {
     }
 
     function testAdd1(uint256 n) public {
+        
         unchecked {
+            // console.log("return" , add1.add1(n));
             assertEq(add1.add1(n), n + 1, "Wrong return number");
         }
     }
@@ -29,6 +31,7 @@ contract Add1Test is Test, NonMatchingSelectorHelper {
         func_selectors[0] = Add1.add1.selector;
 
         bool success = nonMatchingSelectorHelper(func_selectors, callData, address(add1));
+        console.log("success" , success);
         assert(!success);
     }
 }
